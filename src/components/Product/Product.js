@@ -15,6 +15,9 @@ const Product = ({ product, setBookedProduct }) => {
                     }
                     <p>Original price : {product.original_price} Taka</p>
                     <p>Resale price : {product.seller_price} Taka</p>
+                    <p>Front camera : {product.camera.front}</p>
+                    <p>Rear camera : {product.camera.back}</p>
+                    <p>Year of use : {product.yearOfuse}</p>
 
                     <div className="card-actions justify-end">
                         
