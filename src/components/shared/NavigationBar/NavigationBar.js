@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../../context/AuthProvider';
 
 const NavigationBar = () => {
-    const { user } = useContext(authContext)
+    const { user , logOut } = useContext(authContext)
+
+    const handleLogOutBtn = () => {
+        logOut();
+    }
     return (
         <div className=' sticky top-0 z-50'>
             <div className="navbar bg-base-100">
@@ -37,11 +41,11 @@ const NavigationBar = () => {
 
                     <div className="dropdown dropdown-end">
                         {
-                            user?.displayName ? <>
-                                <label tabIndex={0} className="btn btn-warning m-1">{user.displayName}</label>
+                            user?.email ? <>
+                                <label tabIndex={0} className="btn btn-warning m-1">{user?.displayName}</label>
                                 <ul tabIndex={0} className="dropdown-content menu p-2 text-warning shadow bg-base-100 rounded-box w-52">
                                     <li><Link to='/login'>Dashboard</Link></li>
-                                    <li><Link to='/'>Logout</Link></li>
+                                    <button onClick={handleLogOutBtn} className='btn btn-warning'>Logout</button>
                                 </ul></> : <>
                                     <label tabIndex={0} className="btn btn-warning m-1">Login</label>
                                     <ul tabIndex={0} className="dropdown-content menu p-2 text-warning shadow bg-base-100 rounded-box w-52">

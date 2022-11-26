@@ -1,7 +1,51 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../context/AuthProvider';
 
 const Register = () => {
+    const {createUser, updateUser} = useContext(authContext);
+    const handleSubmitBtn = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const role = form.options.value;
+        console.log(name, email, password, role)
+        createUser(email, password)
+        .then(data => {
+            console.log(data)
+            handleUpdate(name)
+            saveUser(name, email, role)
+        })
+        .then(err => console.log(err))
+    }
+
+    const handleUpdate = (name) => {
+        const profile = {
+            displayName : name
+
+        }
+        updateUser(profile)
+        .then(()=>{})
+        .catch(err => console.log(err))
+    }
+
+    const saveUser = (name, email, role) =>{
+        const userInfo = {name, email, role}
+        fetch('http://localhost:5000/users',{
+            method : 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
     return (
         <div>
             <h1 className='text-4xl font-semibold text-warning'>Registration</h1>
@@ -9,7 +53,7 @@ const Register = () => {
 
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form onSubmit={handleSubmitBtn} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
