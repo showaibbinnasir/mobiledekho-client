@@ -46,7 +46,7 @@ const NavigationBar = () => {
                                     <label tabIndex={0} className="btn btn-warning m-1">Login</label>
                                     <ul tabIndex={0} className="dropdown-content menu p-2 text-warning shadow bg-base-100 rounded-box w-52">
                                         <li><Link to='/login'>Login</Link></li>
-                                        <li><Link to='/'>Register</Link></li>
+                                        <li><Link to='/register'>Register</Link></li>
                                     </ul>
                                 </>
                             
