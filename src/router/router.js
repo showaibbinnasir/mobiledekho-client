@@ -1,8 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../components/Dashboard/Dashboard";
 import Homepage from "../components/Homepage/Homepage";
 import Login from "../components/Login/Login";
+import PrivateRouter from "../components/PrivateRouter/PrivateRouter";
 import Products from "../components/Products/Products";
 import Register from "../components/Register/Register";
+import DashboardLayout from "../layout/DashboardLayout";
 import Deafult from "../layout/Deafult";
 
 
@@ -26,11 +29,21 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },{
                 path : '/products/:id',
-                element : <Products></Products>,
+                element : <PrivateRouter><Products></Products></PrivateRouter>,
                 loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
             },{
                 path : '/register',
                 element: <Register></Register>
+            }
+        ]
+    },
+    {
+        path : '/dashboard',
+        element : <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
+        children: [
+            {
+                path : '/dashboard',
+                element: <Dashboard></Dashboard>
             }
         ]
     }

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { authContext } from '../../context/AuthProvider';
 import Product from './Product';
 
 const ModalOpen = ({bookedProduct}) => {
+    const {user} = useContext(authContext)
     const {ProductName, brandName, seller_price, sellerName, location, yearOfuse, postedTime} = bookedProduct;
 
     const handleSubmitBtn = event =>{
@@ -48,7 +50,7 @@ const ModalOpen = ({bookedProduct}) => {
                     <input type='text' placeholder='type here' name='yearsOfuse' value={yearOfuse} disabled className="input input-bordered w-full"/>
                     <input type='text' placeholder='type here' name='postedTime' value={postedTime} disabled className="input input-bordered w-full"/>
                     <input type="number" name="phone" placeholder='enter your phone number' className="input input-bordered w-full"/>
-                    <input type="email" name="email" placeholder='enter your email' className="input input-bordered w-full"/>
+                    <input type="email" name="email" value={user?.email} placeholder='enter your email' className="input input-bordered w-full"/>
                     <input type='submit' className='btn btn-warning my-3'/>
                     
                 </form>
