@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Alluser from "../components/Dashboard/Alluser";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Orders from "../components/Dashboard/Orders";
 import Homepage from "../components/Homepage/Homepage";
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
                 path : '/dashboard/orders',
                 element: <Orders></Orders>
             },
+            {
+                path : '/dashboard/all-user',
+                element : <Alluser></Alluser>,
+                loader : ()=> fetch('http://localhost:5000/users')
+            }
             
         ]
     }
