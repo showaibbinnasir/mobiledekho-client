@@ -27,7 +27,7 @@ const Alluser = () => {
     console.log(allUser);
     return (
         <div>
-            My orders
+            <h1 className='text-2xl text-warning font-semibold'>All users</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     

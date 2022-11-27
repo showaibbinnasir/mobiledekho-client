@@ -34,11 +34,12 @@ const AllProucts = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            refetch()
         })
     }
     return (
         <div>
-            My orders
+            <h1 className='text-2xl font-semibold text-warning'>All Products</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     
