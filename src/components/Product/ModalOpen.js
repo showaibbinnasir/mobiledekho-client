@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider';
 import Product from './Product';
 
-const ModalOpen = ({bookedProduct}) => {
+const ModalOpen = ({bookedProduct, setBookedProduct}) => {
     const {user} = useContext(authContext)
     const {ProductName, brandName, seller_price, sellerName, location, yearOfuse, postedTime} = bookedProduct;
 
@@ -32,6 +33,9 @@ const ModalOpen = ({bookedProduct}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            toast.success('Added to the my orders')
+            setBookedProduct(null)
+            
         })
     }
     return (

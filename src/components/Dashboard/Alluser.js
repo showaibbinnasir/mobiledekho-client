@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider';
 
 const Alluser = () => {
@@ -20,6 +21,7 @@ const Alluser = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            toast.success('Deleted Successfully')
             refetch()
         })
     }

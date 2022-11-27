@@ -27,6 +27,7 @@ const Orders = () => {
                             <th>Buyer email</th>
                             <th>Phone</th>
                             <th>Make Payment</th>
+                            <th>Deletion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +41,7 @@ const Orders = () => {
                                 <td>{order.email}</td>
                                 <td>{order.phone}</td>
                                 <td><button className='btn btn-primary'>Pay</button></td>
+                                <td><button className='btn btn-error'>Delete</button></td>
                             </tr>)
                         }
                         

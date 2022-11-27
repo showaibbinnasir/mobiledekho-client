@@ -23,14 +23,14 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="drawer-id" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 bg-base-100 lg:bg-base-0 text-base-content">
                         {
                             isAdmin === true ? <>
                             <li><Link to='/dashboard/all-user'>All user</Link></li>
                             <li><Link to='/dashboard/allproducts'>All Products</Link></li>
                             
                             </> : 
-                             isSeller === true ? <li><Link to=''>Add product</Link></li>
+                             isSeller === true ? <li><Link to='/dashboard/addproduct'>Add product</Link></li>
                                : <>
                             <li><Link to='/dashboard/orders'>My Orders</Link></li>
                             <li><a>Sidebar Item 2</a></li>

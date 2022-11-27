@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider';
 
 const Register = () => {
     const {createUser, updateUser} = useContext(authContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
     const handleSubmitBtn = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -18,6 +22,8 @@ const Register = () => {
             console.log(data)
             handleUpdate(name)
             saveUser(name, email, role)
+            toast.success('User created in successfully')
+            navigate(from, {replace : true})
         })
         .then(err => console.log(err))
     }

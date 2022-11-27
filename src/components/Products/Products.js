@@ -15,7 +15,7 @@ const Products = () => {
                     products.map(product => <Product key={product.product_id} product={product} setBookedProduct={setBookedProduct}></Product>)
                 }
                 {
-                    bookedProduct && <ModalOpen bookedProduct={bookedProduct}></ModalOpen>
+                    bookedProduct && <ModalOpen bookedProduct={bookedProduct} setBookedProduct={setBookedProduct}></ModalOpen>
                 }
             </div>
         </div>
