@@ -3,11 +3,14 @@ import { Link, Outlet } from 'react-router-dom';
 import NavigationBar from '../components/shared/NavigationBar/NavigationBar';
 import { authContext } from '../context/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useSeller from '../hooks/useSeller';
 
 const DashboardLayout = () => {
     const {user} = useContext(authContext)
     const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
     console.log(isAdmin)
+    console.log(isSeller)
     return (
         <div>
             <NavigationBar></NavigationBar>
@@ -25,7 +28,10 @@ const DashboardLayout = () => {
                             isAdmin === true ? <>
                             <li><Link to='/dashboard/all-user'>All user</Link></li>
                             <li><Link to='/dashboard/allproducts'>All Products</Link></li>
-                            </> : <>
+                            
+                            </> : 
+                             isSeller === true ? <li><Link to=''>Add product</Link></li>
+                               : <>
                             <li><Link to='/dashboard/orders'>My Orders</Link></li>
                             <li><a>Sidebar Item 2</a></li>
                             </>
