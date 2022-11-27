@@ -1,9 +1,30 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider';
 
 const Alluser = () => {
-    const users = useLoaderData();
+    const {data : allUser = [], refetch} = useQuery({
+        queryKey : ['allUser'],
+        queryFn : async()=>{
+            const res = await fetch('http://localhost:5000/users')
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    const handleDeleteBtn = id =>{
+        fetch(`http://localhost:5000/users/${id}`, {
+            method : 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            refetch()
+        })
+    }
+
+    console.log(allUser);
     return (
         <div>
             My orders
@@ -16,17 +37,19 @@ const Alluser = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Delete</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         
                         {
-                            users.map((order, i) => <tr key={i}>
+                            allUser.map((order, i) => <tr key={i}>
                                 <th>{i+1}</th>
                                 <td>{order.name}</td>
                                 <td>{order.email}</td>
                                 <td>{order.role}</td>
+                                <td><button onClick={()=>handleDeleteBtn(order._id)} className='btn btn-error'>Delete</button></td>
                                 
                             </tr>)
                         }
