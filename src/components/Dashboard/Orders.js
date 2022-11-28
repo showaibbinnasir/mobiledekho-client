@@ -1,17 +1,41 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider';
 
 const Orders = () => {
-    const [orders, setOrders] = useState([]);
+    
     const { user } = useContext(authContext);
-    useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setOrders(data)
-            })
-    }, [user?.email])
+    const {data : orders = [], refetch} = useQuery({
+        queryKey : ['allUser'],
+        queryFn : async()=>{
+            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`)
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    const handleDeleteBtn = id =>{
+        fetch(`http://localhost:5000/orders/${id}`,{
+            method : 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            toast.success('deleted successfully')
+            refetch()
+        })
+        
+    }
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/orders?email=${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setOrders(data)
+    //         })
+    // }, [user?.email])
     return (
         <div>
             My orders
@@ -40,8 +64,13 @@ const Orders = () => {
                                 <td>{order.sellerName}</td>
                                 <td>{order.email}</td>
                                 <td>{order.phone}</td>
-                                <td><button className='btn btn-primary'>Pay</button></td>
-                                <td><button className='btn btn-error'>Delete</button></td>
+                                {
+                                    order?.paid === true ? <td>Paid</td> : 
+                                    <td><Link to={`/dashboard/payment/${order._id}`} className='btn btn-warning'>Pay</Link></td>
+                                }
+                                <td><button onClick={()=> handleDeleteBtn(order._id)} className='btn btn-error'>Delete</button></td>
+                                
+                                
                             </tr>)
                         }
                         
