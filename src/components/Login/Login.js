@@ -45,7 +45,7 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-warning">Login</button>
                             </div>
-                            <h1><small>New to doctors portal? <Link className='text-primary' to='/register'>Register Now</Link></small></h1>
+                            <h1><small>New to mobileDekho.com? <Link className='text-primary' to='/register'>Register Now</Link></small></h1>
                         </form>
                         <div className="divider">OR</div>
                         <button className='btn btn-warning mx-8 my-2 text-white'>Sign in with google</button>

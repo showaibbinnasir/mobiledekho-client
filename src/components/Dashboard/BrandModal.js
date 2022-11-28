@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider';
 
 const BrandModal = ({brandModal, setBrandModal}) => {
@@ -62,6 +63,8 @@ const BrandModal = ({brandModal, setBrandModal}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            toast.success('product added successfully')
+            setBrandModal(null)
         })
     }
     console.log(allProducts.length)

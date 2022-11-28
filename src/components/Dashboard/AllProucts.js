@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AllProucts = () => {
-    const {data : allProducts = [], refetch} = useQuery({
+    const {data : allProducts = [], refetch, isLoading} = useQuery({
         queryKey : ['allProducts'],
         queryFn : async()=>{
             const res = await fetch('http://localhost:5000/products')
@@ -10,6 +11,9 @@ const AllProucts = () => {
             return data;
         }
     })
+    if(isLoading){
+        <progress className="progress w-56"></progress>
+    }
     const handleDeleteBtn = id =>{
         fetch(`http://localhost:5000/products/${id}`, {
             method : 'DELETE'
@@ -17,6 +21,7 @@ const AllProucts = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            toast.success('deleted successfully')
             refetch()
         })
     }

@@ -10,7 +10,7 @@ const Product = ({ product, setBookedProduct }) => {
                     {
                         product.verification === true ? <div className='flex'>
                             <p>Seller name: {product.sellerName}</p>
-                            <p><small>Verified</small></p>
+                            <p><small className='bg-blue-600 text-white rounded-sm p-2'>Verified</small></p>
                         </div> : <p>Seller name : {product.sellerName}</p>
                     }
                     <p>Original price : {product.original_price} Taka</p>
