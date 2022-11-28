@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllPhone from "../components/AllPhone/AllPhone";
 import AddProduct from "../components/Dashboard/AddProduct";
 import AddProductForm from "../components/Dashboard/AddProductForm";
 import AllProucts from "../components/Dashboard/AllProucts";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             },{
                 path : '/register',
                 element: <Register></Register>
+            },{
+                path : '/allphone',
+                element : <PrivateRouter><AllPhone></AllPhone></PrivateRouter>,
+                loader: ()=> fetch('http://localhost:5000/products')
             }
         ]
     },
