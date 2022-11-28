@@ -1,12 +1,60 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../context/AuthProvider';
 
 const BrandModal = ({brandModal, setBrandModal}) => {
     console.log(brandModal)
+    const [allProducts, setAllProducts] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/products')
+        .then(res => res.json())
+        .then(data => setAllProducts(data))
+    },[])
     const{user} = useContext(authContext)
     const handleSubmitBtn = event => {
+        event.preventDefault();
+        const form = event.target;
+        const brand_id = brandModal.brand_id;
+        const productId = "0" + (allProducts.length + 1);
+        const ProductName = form.ProductName.value;
+        const back = form.rearcamera.value;
+        const front = form.frontcamera.value;
+        const ram = form.ram.value;
+        const rom = form.rom.value;
+        const memory = {ram, rom}
+        const camera = {back, front};
+        const chipset = form.chipset.value;
+        const original_price = form.originalprice.value;
+        const seller_price = form.sellerprice.value;
+        const thumbnail = form.thumbnail.value;
+        const yearOfuse = form.yearOfUse.value;
+        const location = form.location.value;
+        const postedTime = form.postedTime.value;
+        const verification = false;
+        const sellerName = form.sellername.value;
+        const sellerId = allProducts.length + 1;
+        const brandName = form.brandName.value;
 
+        const productInfo = {
+            brand_id,
+            productId, 
+            ProductName,
+            camera,
+            memory,
+            chipset,
+            original_price,
+            seller_price,
+            thumbnail,
+            yearOfuse,
+            location,
+            postedTime,
+            verification,
+            sellerName,
+            sellerId,
+            brandName
+        }
+        console.log(productInfo)
     }
+    console.log(allProducts.length)
     return (
         <div>
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />

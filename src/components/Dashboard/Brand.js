@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AddProductForm from './AddProductForm';
 
-const Brand = ({ brand, setBrandModal }) => {
+const Brand = ({ brand, setBrandModal, length }) => {
+    
     return (
         <div className='flex justify-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
