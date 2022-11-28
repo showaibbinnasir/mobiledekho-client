@@ -24,7 +24,7 @@ const BrandModal = ({brandModal, setBrandModal}) => {
         const camera = {back, front};
         const chipset = form.chipset.value;
         const original_price = form.originalprice.value;
-        const seller_price = form.sellerprice.value;
+        const seller_price = parseInt(form.sellerprice.value);
         const thumbnail = form.thumbnail.value;
         const yearOfuse = form.yearOfUse.value;
         const location = form.location.value;
@@ -52,7 +52,17 @@ const BrandModal = ({brandModal, setBrandModal}) => {
             sellerId,
             brandName
         }
-        console.log(productInfo)
+        fetch('http://localhost:5000/products', {
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(productInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     }
     console.log(allProducts.length)
     return (

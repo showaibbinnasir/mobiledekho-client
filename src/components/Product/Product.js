@@ -4,7 +4,7 @@ const Product = ({ product, setBookedProduct }) => {
     return (
         <div className='text-white'>
             <div className="card card-side bg-base-100 shadow-2xl">
-                <figure><img src={product.thumbnail} alt="" /></figure>
+                <figure><img src={product.thumbnail} alt="" className='h-40'/></figure>
                 <div className="card-body">
                     <h2 className="card-title">{product.ProductName}</h2>
                     {
