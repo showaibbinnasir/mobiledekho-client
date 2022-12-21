@@ -20,7 +20,7 @@ const Login = () => {
             toast.success('User loged in successfully')
             navigate(from, {replace : true})
         })
-        .catch(err => console.log(err))
+        .catch(err => toast.error(err.message))
     }
     return (
         <div>
@@ -47,8 +47,7 @@ const Login = () => {
                             </div>
                             <h1><small>New to mobileDekho.com? <Link className='text-primary' to='/register'>Register Now</Link></small></h1>
                         </form>
-                        <div className="divider">OR</div>
-                        <button className='btn btn-warning mx-8 my-2 text-white'>Sign in with google</button>
+                        
                     </div>
                     
                 </div>

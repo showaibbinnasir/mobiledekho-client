@@ -8,14 +8,14 @@ const Alluser = () => {
     const {data : allUser = [], refetch} = useQuery({
         queryKey : ['allUser'],
         queryFn : async()=>{
-            const res = await fetch('http://localhost:5000/users')
+            const res = await fetch('https://mobiledekho-server.vercel.app/users')
             const data = await res.json();
             return data;
         }
     })
 
     const handleDeleteBtn = id =>{
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://mobiledekho-server.vercel.app/users/${id}`, {
             method : 'DELETE'
         })
         .then(res => res.json())

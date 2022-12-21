@@ -9,7 +9,7 @@ const CheckOutForm = ({ payment }) => {
     const [transaction, setTransaction] = useState('')
     const [proccessing , setProccessing] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/create-pament-intend', {
+        fetch('https://mobiledekho-server.vercel.app/create-pament-intend', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

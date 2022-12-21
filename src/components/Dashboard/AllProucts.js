@@ -6,7 +6,7 @@ const AllProucts = () => {
     const {data : allProducts = [], refetch, isLoading} = useQuery({
         queryKey : ['allProducts'],
         queryFn : async()=>{
-            const res = await fetch('http://localhost:5000/products')
+            const res = await fetch('https://mobiledekho-server.vercel.app/products')
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllProucts = () => {
         <progress className="progress w-56"></progress>
     }
     const handleDeleteBtn = id =>{
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://mobiledekho-server.vercel.app/products/${id}`, {
             method : 'DELETE'
         })
         .then(res => res.json())
@@ -29,7 +29,7 @@ const AllProucts = () => {
     const handleVerifyBtn = id =>{
         const verification = true;
         const verify = {verification};
-        fetch(`http://localhost:5000/products/update/${id}`, {
+        fetch(`https://mobiledekho-server.vercel.app/products/update/${id}`, {
             method : 'PUT',
             headers : {
                 'content-type' : 'application/json'

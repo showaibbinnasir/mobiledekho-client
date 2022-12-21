@@ -9,7 +9,7 @@ const AllPhone = () => {
     return (
         <div>
             <h1 className='text-4xl text-warning font-semibold'>All phones</h1>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mx-6 lg:mx-12'>
                 {
                     phones.map(phone => <Product key={phone._id} product={phone} setBookedProduct={setBookedProduct}></Product>)
                 }

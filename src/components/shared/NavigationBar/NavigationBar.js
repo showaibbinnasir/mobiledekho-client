@@ -18,7 +18,7 @@ const NavigationBar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box text-warning w-52">
                             <li className='font-semibold'><Link to='/'>Home</Link></li>
-                            <li className='font-semibold'><Link to='/'>Categories</Link></li>
+                            <li className='font-semibold'><Link to='/allphone'>All phones</Link></li>
 
 
 

@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Homepage></Homepage>,
-                loader: ()=> fetch('http://localhost:5000/brands')
+                loader: ()=> fetch('https://mobiledekho-server.vercel.app/brands')
 
             },
             {
@@ -40,14 +40,14 @@ const router = createBrowserRouter([
             },{
                 path : '/products/:id',
                 element : <PrivateRouter><Products></Products></PrivateRouter>,
-                loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params})=> fetch(`https://mobiledekho-server.vercel.app/products/${params.id}`)
             },{
                 path : '/register',
                 element: <Register></Register>
             },{
                 path : '/allphone',
                 element : <PrivateRouter><AllPhone></AllPhone></PrivateRouter>,
-                loader: ()=> fetch('http://localhost:5000/products')
+                loader: ()=> fetch('https://mobiledekho-server.vercel.app/products')
             }
         ]
     },
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             },{
                 path : '/dashboard/addproduct',
                 element : <AddProduct></AddProduct>,
-                loader: ()=> fetch('http://localhost:5000/brands')
+                loader: ()=> fetch('https://mobiledekho-server.vercel.app/brands')
             },{
                 path : '/dashboard/addproductfrom',
                 element : <AddProductForm></AddProductForm>
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
             {
                 path : '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader : ({params})=> fetch(`http://localhost:5000/orders/${params.id}`) 
+                loader : ({params})=> fetch(`https://mobiledekho-server.vercel.app/orders/${params.id}`) 
             }
             
         ]

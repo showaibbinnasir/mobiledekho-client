@@ -25,7 +25,7 @@ const Register = () => {
             toast.success('User created in successfully')
             navigate(from, {replace : true})
         })
-        .then(err => console.log(err))
+        .catch(err => toast.error(err.message))
     }
 
     const handleUpdate = (name) => {
@@ -35,12 +35,12 @@ const Register = () => {
         }
         updateUser(profile)
         .then(()=>{})
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.message))
     }
 
     const saveUser = (name, email, role) =>{
         const userInfo = {name, email, role}
-        fetch('http://localhost:5000/users',{
+        fetch('https://mobiledekho-server.vercel.app/users',{
             method : 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -90,8 +90,7 @@ const Register = () => {
                             </div>
                             <h1><small>Already User? <Link className='text-primary' to='/login'>Login Now</Link></small></h1>
                         </form>
-                        <div className="divider">OR</div>
-                        <button className='btn btn-warning mx-8 my-2 text-white'>Sign in with google</button>
+                        
                     </div>
                 </div>
             </div>

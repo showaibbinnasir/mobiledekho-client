@@ -12,6 +12,12 @@ const firebaseConfig = {
   messagingSenderId: "1022377580350",
   appId: "1:1022377580350:web:4cc6d30dcb9ebdf58c7e6f"
 };
+// apiKey: "AIzaSyDhvOCBJKVSn7rtQ0woXXoVS8Ms7NGJVzg",
+//   authDomain: "mobiledekho-9c210.firebaseapp.com",
+//   projectId: "mobiledekho-9c210",
+//   storageBucket: "mobiledekho-9c210.appspot.com",
+//   messagingSenderId: "1022377580350",
+//   appId: "1:1022377580350:web:4cc6d30dcb9ebdf58c7e6f"
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

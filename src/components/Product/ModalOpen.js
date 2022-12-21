@@ -23,7 +23,7 @@ const ModalOpen = ({bookedProduct, setBookedProduct}) => {
             ProductName, brandName, seller_price, sellerName, yearsOfuse, postedTime, phone, email, location
         }
         console.log(orderInfo)
-        fetch('http://localhost:5000/orders', {
+        fetch('https://mobiledekho-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

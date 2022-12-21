@@ -6,7 +6,7 @@ const BrandModal = ({brandModal, setBrandModal}) => {
     console.log(brandModal)
     const [allProducts, setAllProducts] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://mobiledekho-server.vercel.app/products')
         .then(res => res.json())
         .then(data => setAllProducts(data))
     },[])
@@ -53,7 +53,7 @@ const BrandModal = ({brandModal, setBrandModal}) => {
             sellerId,
             brandName
         }
-        fetch('http://localhost:5000/products', {
+        fetch('https://mobiledekho-server.vercel.app/products', {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'

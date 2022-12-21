@@ -10,14 +10,14 @@ const Orders = () => {
     const {data : orders = [], refetch} = useQuery({
         queryKey : ['allUser'],
         queryFn : async()=>{
-            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`)
+            const res = await fetch(`https://mobiledekho-server.vercel.app/orders?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
     })
 
     const handleDeleteBtn = id =>{
-        fetch(`http://localhost:5000/orders/${id}`,{
+        fetch(`https://mobiledekho-server.vercel.app/orders/${id}`,{
             method : 'DELETE'
         })
         .then(res => res.json())
@@ -29,7 +29,7 @@ const Orders = () => {
         
     }
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/orders?email=${user?.email}`)
+    //     fetch(`https://mobiledekho-server.vercel.app/orders?email=${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data);
